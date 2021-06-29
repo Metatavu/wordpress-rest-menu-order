@@ -3,7 +3,7 @@
  * Created on Apr 3, 2018
  * Plugin Name: REST menu order
  * Description: Adds support for quering menu_order from all post types 
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Metatavu Oy
  */
 
@@ -17,6 +17,8 @@
         if (!$postId) {
           return null;
         }
+
+        clean_post_cache($postId);
 
         $post = get_post($postId);
         if ($post && $post->post_status === "publish") {
