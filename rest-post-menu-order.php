@@ -18,10 +18,10 @@
           return null;
         }
 
-        clean_post_cache($postId);
-
         $post = get_post($postId);
         if ($post && $post->post_status === "publish") {
+          setcookie("wordress_menuorder_cache", time() + "_bust_cache");
+
           return [
             "menu_order" => $post->menu_order
           ];
